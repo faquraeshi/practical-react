@@ -1,26 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
+// components
+import Header from './components/Header';
+import Body, {Body2, Body3} from './components/Body';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  add(a,b) {
+    return a+b
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Header
+          title={"Hello from the App"}
+          count={7}
+          myArr={[10,2,3]}
+          myFunc={this.add}
+          myObj={{
+            a: 5,
+            b: 11
+          }}
+        />
+        <Body
+          greetTxt="Hello, React..."
+          greetTxt2="This is 2nd greeting"
+          myFunc={this.add} />
+        <Body2 />
+        <Body3 />
+      </div>
+    );
+  }
 }
 
 export default App;
