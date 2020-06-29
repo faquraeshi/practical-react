@@ -30,7 +30,8 @@ class App extends Component {
           myFunc={this.add} />
         <Body2 />
         <Body3 />
-        <Counter />
+        <Counter initialCount={0} />
+        <Counter initialCount={10} />
       </div>
     );
   }
