@@ -3,6 +3,8 @@ import './App.css';
 // components
 import Header from './components/Header';
 import Body, {Body2, Body3} from './components/Body';
+import Counter from './components/Counter';
+
 
 class App extends Component {
   add(a,b) {
@@ -28,6 +30,7 @@ class App extends Component {
           myFunc={this.add} />
         <Body2 />
         <Body3 />
+        <Counter />
       </div>
     );
   }
