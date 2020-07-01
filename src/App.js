@@ -12,7 +12,7 @@ class App extends Component {
   sectionStyle = {
     width: '90%',
     margin: '30px auto',
-    height: 500,
+    height: '45vh',
     borderRadius: 5,
     backgroundColor: '#ccc',
   }
