@@ -24,14 +24,13 @@ export default class ImageSlider extends Component {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-
+    position: 'relative',
   }
   styl_sliderImage = {
     width: 'auto',
     height: '90%',
-
   }
-  styl_btn = {
+  styl_btn_prev = {
     width: 'auto',
     height: 30,
     background: '#0f0f0f',
@@ -40,21 +39,51 @@ export default class ImageSlider extends Component {
     border: 'none',
     color: 'white',
     cursor: 'pointer',
+    position: 'absolute',
+    top: '45%',
+    left: 0,
+    zIndex: 1,
+  }
+  styl_btn_next = {
+    width: 'auto',
+    height: 30,
+    background: '#0f0f0f',
+    margin: '20px 40px',
+    padding: 5,
+    border: 'none',
+    color: 'white',
+    cursor: 'pointer',
+    position: 'absolute',
+    top: '45%',
+    right: 0,
+    zIndex: 1,
   }
 
   // Methods
+
+  handlePrev = () => {
+    this.setState({
+      idx: this.state.idx - 1,  // shallow merge
+    },
+    () => {                     // async callback
+      if (this.state.idx < 0) {
+        this.setState({
+          idx: this.state.images.length -1,
+        })
+      }
+    });
+  }
   handleNext = () => {
     console.log(this.state);
     this.setState({
       idx: this.state.idx + 1,  // shallow merge
     },
-    () => {
-      console.log(this.state) // async callback
-    });
-  }
-  handlePrev = () => {
-    this.setState({
-      idx: this.state.idx - 1,
+    () => {                     // async callback
+      if (this.state.idx == this.state.images.length) {
+        this.setState({
+          idx: 0,
+        })
+      }
     });
   }
 
@@ -62,9 +91,9 @@ export default class ImageSlider extends Component {
   render() {
     return (
       <div style={this.styl_sliderContainer}>
-        <button style={this.styl_btn} onClick={this.handlePrev}>prev</button>
+        <button style={this.styl_btn_prev} onClick={this.handlePrev}>prev</button>
         <img style={this.styl_sliderImage} src={this.state.images[this.state.idx]} />
-        <button style={this.styl_btn} onClick={this.handleNext}>next</button>
+        <button style={this.styl_btn_next} onClick={this.handleNext}>next</button>
       </div>
     );
   }
