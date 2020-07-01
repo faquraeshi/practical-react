@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 
+
 /*
   1. shallow merge
   2. async
@@ -8,11 +9,11 @@ import React, {Component} from 'react';
 export default class ImageSlider extends Component {
   state = {
     images: [
-      "https://todaysmama.com/.image/c_limit%2Ccs_srgb%2Cq_auto:good%2Cw_400/MTU5OTA5MDU2MjgxNzgxNjIz/image-placeholder-title.webp",
-      "https://todaysmama.com/.image/t_share/MTU5OTA4OTYwNDQ5NjAyOTM1/image-placeholder-title.jpg",
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS0AaZUAGFihm8BRSqfeZx5ab_2MqELC3_Zdw&usqp=CAU",
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSDX4B0wPZlTeBl7buyCAFXubuHXP1-Zd13Fw&usqp=CAU",
-      "https://www.hortmag.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTY4OTExNDMwMTQwNzY1OTA0/image-placeholder-title.jpg"
+      "/assets/images/2015_charlie_bachman_erd-uml.jpg",
+      "/assets/images/flowers-frame_chris-wilsone_hotelroom.jpg",
+      "/assets/images/pattern_pentagraph_islamic.png",
+      "/assets/images/peter-chen_the-mastermind-behind_erd.jpg",
+      "/assets/images/slack-meme-199x300.jpeg",
     ],
     idx: 0,
   }
@@ -22,6 +23,7 @@ export default class ImageSlider extends Component {
     width: '100%',
     height: '100%',
     display: 'flex',
+    flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
     position: 'relative',
@@ -29,6 +31,7 @@ export default class ImageSlider extends Component {
   styl_sliderImage = {
     width: 'auto',
     height: '90%',
+    marginBottom: 10,
   }
   styl_btn_prev = {
     width: 'auto',
@@ -58,7 +61,6 @@ export default class ImageSlider extends Component {
   }
 
   // Methods
-
   handlePrev = () => {
     this.setState({
       idx: this.state.idx - 1,  // shallow merge
@@ -91,6 +93,7 @@ export default class ImageSlider extends Component {
       <div style={this.styl_sliderContainer}>
         <button style={this.styl_btn_prev} onClick={this.handlePrev}>prev</button>
         <img style={this.styl_sliderImage} src={this.state.images[this.state.idx]} />
+        <em>image caption placeholder</em>
         <button style={this.styl_btn_next} onClick={this.handleNext}>next</button>
       </div>
     );

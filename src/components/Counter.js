@@ -9,6 +9,16 @@ export default class Counter extends Component {
     };
   }
 
+  // styles
+  styl_sliderContainer = {
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'relative',
+  }
+
   increment = () => {
     this.setState({
       count: this.state.count + 1,
@@ -22,7 +32,7 @@ export default class Counter extends Component {
 
   render() {
     return (
-      <p>
+      <p style={this.styl_sliderContainer}>
         <button onClick={this.decrement}>- decrement -</button>
         <span>&nbsp;&nbsp; counter: {this.state.count} &nbsp;&nbsp;</span>
         <button onClick={this.increment}>+ increment +</button>

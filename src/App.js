@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import './App.css';
-// components
-import Header from './components/Header';
-import Body, {Body2, Body3} from './components/Body';
 import Counter from './components/Counter';
+
+// style imports
+import './App.css';
+
+// project component imports
 import ImageSlider from './components/ImageSlider';
 
 
@@ -17,36 +18,25 @@ class App extends Component {
     backgroundColor: '#ccc',
   }
 
-
-  // helper methods
-  add(a,b) {
-    return a+b
+  state = {
+    visible: true,
   }
 
   render() {
+    const btnTxt = this.state.visible ? 'hide slider' : 'show slider';
+    const slider = this.state.visible ? <ImageSlider /> : <Counter initialCount={10} />;
+    
     return (
       <div className="App">
-        <Header
-          title={"Hello from the App"}
-          count={7}
-          myArr={[10,2,3]}
-          myFunc={this.add}
-          myObj={{
-            a: 5,
-            b: 11
-          }}
-        />
-        <Body
-          greetTxt="Hello, React..."
-          greetTxt2="This is 2nd greeting"
-          myFunc={this.add} />
-        <Body2 />
-        <Body3 />
-        <Counter initialCount={0} />
-        <Counter initialCount={10} />
+        <h1>Simple Image Slider</h1>
         <div style={this.sectionStyle}>
-          <ImageSlider />
+          {slider}
         </div>
+        <button
+          onClick={() => {
+            this.setState({visible: !this.state.visible});
+          }}
+          >{btnTxt}</button>
       </div>
     );
   }
