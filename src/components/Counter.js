@@ -10,13 +10,19 @@ export default class Counter extends Component {
   }
 
   // styles
-  styl_sliderContainer = {
+  styl_counterContainer = {
     width: '100%',
     height: '100%',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    position: 'relative',
+  }
+
+  componentDidMount() {
+    console.log('Mounted');
+  }
+  componentWillUnmount() {
+    console.log('Umounted');
   }
 
   increment = () => {
@@ -32,7 +38,7 @@ export default class Counter extends Component {
 
   render() {
     return (
-      <div style={this.styl_sliderContainer}>
+      <div style={this.styl_counterContainer}>
         <button onClick={this.decrement}>- decrement -</button>
         <span>&nbsp;&nbsp; counter: {this.state.count} &nbsp;&nbsp;</span>
         <button onClick={this.increment}>+ increment +</button>

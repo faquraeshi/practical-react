@@ -70,7 +70,9 @@ class App extends Component {
         <div className="App">
           <h1>{this.state.counter.title}</h1>
           <div style={this.sectionStyle}>
-            {this.state.visible ? <Counter initialCount={10} /> : null}
+            <div className={this.state.visible ? 'visible' : 'hidden'}>
+              <Counter initialCount={10} />
+            </div>
             <button
               style={this.toggleBtnStyle}
               onClick={this.toggle}>
