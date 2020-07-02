@@ -79,7 +79,7 @@ export default class ImageSlider extends Component {
       idx: this.state.idx + 1,  // shallow merge
     },
     () => {                     // async callback
-      if (this.state.idx == this.state.images.length) {
+      if (this.state.idx === this.state.images.length) {
         this.setState({
           idx: 0,
         })
@@ -92,7 +92,7 @@ export default class ImageSlider extends Component {
     return (
       <div style={this.styl_sliderContainer}>
         <button style={this.styl_btn_prev} onClick={this.handlePrev}>prev</button>
-        <img style={this.styl_sliderImage} src={this.state.images[this.state.idx]} />
+        <img style={this.styl_sliderImage} src={this.state.images[this.state.idx]} alt="" />
         <em>image caption placeholder</em>
         <button style={this.styl_btn_next} onClick={this.handleNext}>next</button>
       </div>

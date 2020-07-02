@@ -32,11 +32,11 @@ export default class Counter extends Component {
 
   render() {
     return (
-      <p style={this.styl_sliderContainer}>
+      <div style={this.styl_sliderContainer}>
         <button onClick={this.decrement}>- decrement -</button>
         <span>&nbsp;&nbsp; counter: {this.state.count} &nbsp;&nbsp;</span>
         <button onClick={this.increment}>+ increment +</button>
-      </p>
+      </div>
     );
   }
 }
