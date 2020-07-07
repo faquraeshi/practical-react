@@ -19,15 +19,6 @@ export default class ImageSlider extends Component {
   }
 
   // styles
-  styl_sliderContainer = {
-    width: '100%',
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'relative',
-  }
   styl_sliderImage = {
     width: 'auto',
     height: '90%',
@@ -90,7 +81,7 @@ export default class ImageSlider extends Component {
 
   render() {
     return (
-      <div style={this.styl_sliderContainer}>
+      <div className="flex-container flex-container--column">
         <button style={this.styl_btn_prev} onClick={this.handlePrev}>prev</button>
         <img style={this.styl_sliderImage} src={this.state.images[this.state.idx]} alt="" />
         <em>image caption placeholder</em>

@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import Counter from './components/Counter';
-import Header from './components/Header';
 
 // style imports
 import './App.css';
 
 // project component imports
 import ImageSlider from './components/ImageSlider';
+import Counter from './components/Counter';
+import Header from './components/Header';
 
 
 class App extends Component {
@@ -38,9 +38,10 @@ class App extends Component {
       name: "Header",
       title: 'The Header',
     },
-    whichComponentToShow: 'ImageSlider',
-    btnTxt_next_screen: 'Next Screen',
-    btnTxt_prev_screen: 'Previous Screen',
+    whichComponentToShow: 'Header',
+    btnTxt_home_screen: 'Let\'s Go Home',
+    btnTxt_slider_screen: 'Land on Slider',
+    btnTxt_counter_screen: 'Show Counter',
     visible: true,
   }
 
@@ -62,7 +63,13 @@ class App extends Component {
             onClick={() => {
               this.setState({whichComponentToShow: this.state.counter.name});
             }}
-            >{this.state.btnTxt_next_screen}</button>
+            >{this.state.btnTxt_counter_screen}</button>
+          &nbsp;&nbsp;&nbsp;
+          <button
+            onClick={() => {
+              this.setState({whichComponentToShow: this.state.header.name});
+            }}
+            >{this.state.btnTxt_home_screen}</button>
         </div>
       );
     } else if (this.state.whichComponentToShow === this.state.counter.name) {
@@ -70,7 +77,7 @@ class App extends Component {
         <div className="App">
           <h1>{this.state.counter.title}</h1>
           <div style={this.sectionStyle}>
-            <div className={this.state.visible ? 'visible' : 'hidden'}>
+            <div className={this.state.visible ? 'visible flex-container' : 'hidden'}>
               <Counter initialCount={10} />
             </div>
             <button
@@ -80,15 +87,16 @@ class App extends Component {
           </div>
           <button
             onClick={() => {
-              this.setState({whichComponentToShow: this.state.slider.name});
-            }}
-            >{this.state.btnTxt_prev_screen}</button>
-            &nbsp;&nbsp;&nbsp;
-          <button
-            onClick={() => {
               this.setState({whichComponentToShow: this.state.header.name});
             }}
-            >{this.state.btnTxt_next_screen}</button>
+            >{this.state.btnTxt_home_screen}</button>
+          &nbsp;&nbsp;&nbsp;
+          <button
+            onClick={() => {
+              this.setState({whichComponentToShow: this.state.slider.name});
+            }}
+            >{this.state.btnTxt_slider_screen}</button>
+          
         </div>
       )
     } else if (this.state.whichComponentToShow === this.state.header.name) {
@@ -100,7 +108,7 @@ class App extends Component {
             onClick={() => {
               this.setState({whichComponentToShow: this.state.counter.name});
             }}
-            >{this.state.btnTxt_prev_screen}</button>
+            >{this.state.btnTxt_counter_screen}</button>
         </div>
       )
     }

@@ -9,15 +9,6 @@ export default class Counter extends Component {
     };
   }
 
-  // styles
-  styl_counterContainer = {
-    width: '100%',
-    height: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  }
-
   componentDidMount() {
     console.log('Mounted');
   }
@@ -38,7 +29,7 @@ export default class Counter extends Component {
 
   render() {
     return (
-      <div style={this.styl_counterContainer}>
+      <div>
         <button onClick={this.decrement}>- decrement -</button>
         <span>&nbsp;&nbsp; counter: {this.state.count} &nbsp;&nbsp;</span>
         <button onClick={this.increment}>+ increment +</button>
