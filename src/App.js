@@ -7,6 +7,7 @@ import './App.css';
 import ImageSlider from './components/ImageSlider';
 import Counter from './components/Counter';
 import Header from './components/Header';
+import MyForm from './components/MyForm';
 
 
 class App extends Component {
@@ -28,20 +29,25 @@ class App extends Component {
   state = {
     slider: {
       name: "ImageSlider",
-      title: 'Simple Image Slider',
+      title: "Simple Image Slider",
     },
     counter: {
       name: "Counter",
-      title: 'Simple Counter',
+      title: "Simple Counter",
     },
     header: {
       name: "Header",
-      title: 'The Header',
+      title: "The Header",
     },
-    whichComponentToShow: 'ImageSlider',
+    form: {
+      name: "MyForm",
+      title: "React Form",
+    },
+    whichComponentToShow: 'MyForm',
     btnTxt_home_screen: 'Let\'s Go Home',
     btnTxt_slider_screen: 'Land on Slider',
     btnTxt_counter_screen: 'Show Counter',
+    btnTxt_form_screen: 'Show Form',
     visible: true,
   }
 
@@ -109,10 +115,33 @@ class App extends Component {
               this.setState({whichComponentToShow: this.state.counter.name});
             }}
             >{this.state.btnTxt_counter_screen}</button>
+          &nbsp;&nbsp;&nbsp;
+          <button
+            onClick={() => {
+              this.setState({whichComponentToShow: this.state.slider.name});
+            }}
+            >{this.state.btnTxt_slider_screen}</button>
+          &nbsp;&nbsp;&nbsp;
+          <button
+            onClick={() => {
+              this.setState({whichComponentToShow: this.state.form.name});
+            }}
+            >{this.state.btnTxt_form_screen}</button>
         </div>
       )
-    }
-    
+    } else if (this.state.whichComponentToShow === this.state.form.name) {
+      return (
+        <div className="App">
+          <h1>{this.state.form.title}</h1>
+          <MyForm />
+          <button
+            onClick={() => {
+              this.setState({whichComponentToShow: this.state.header.name});
+            }}
+            >{this.state.btnTxt_home_screen}</button>
+        </div>
+      )
+    }   
   }
 }
 
