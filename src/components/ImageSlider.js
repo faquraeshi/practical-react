@@ -8,14 +8,29 @@ import React, {Component} from 'react';
 
 export default class ImageSlider extends Component {
   state = {
-    images: [
-      "/assets/images/2015_charlie_bachman_erd-uml.jpg",
-      "/assets/images/flowers-frame_chris-wilsone_hotelroom.jpg",
-      "/assets/images/pattern_pentagraph_islamic.png",
-      "/assets/images/peter-chen_the-mastermind-behind_erd.jpg",
-      "/assets/images/slack-meme-199x300.jpeg",
-    ],
     idx: 0,
+    images: [
+      {
+        url: "/assets/images/2015_charlie_bachman_erd-uml.jpg",
+        title: "Charlie Bachmen: ERD UML"
+      },
+      {
+        url: "/assets/images/flowers-frame_chris-wilsone_hotelroom.jpg",
+        title: "Picture Frame: Chris Wilsone's Hotelroom"
+      },
+      {
+        url: "/assets/images/pattern_pentagraph_islamic.png",
+        title: "Pattern: Islamic Pentagraph"
+      },
+      {
+        url: "/assets/images/peter-chen_the-mastermind-behind_erd.jpg",
+        title: "Peter Chen: The Mastermind Behind ERD"
+      },
+      {
+        url: "/assets/images/slack-meme-199x300.jpeg",
+        title: "I'm Hip: Slack Meme"
+      },
+    ],
   }
 
   // styles
@@ -53,38 +68,47 @@ export default class ImageSlider extends Component {
 
   // Methods
   handlePrev = () => {
-    this.setState({
-      idx: this.state.idx - 1,  // shallow merge
-    },
-    () => {                     // async callback
-      if (this.state.idx < 0) {
-        this.setState({
-          idx: this.state.images.length -1,
-        })
+    this.setState(
+      {
+        idx: this.state.idx - 1,  // shallow merge
+      },
+      () => {                     // async callback
+        console.log(this.state.idx);
+        if (this.state.idx < 0) {
+          this.setState({
+            idx: this.state.images.length - 1,
+          });
+          console.log(this.state.idx);
+        }
       }
-    });
+    );
   }
   handleNext = () => {
-    console.log(this.state);
-    this.setState({
-      idx: this.state.idx + 1,  // shallow merge
-    },
-    () => {                     // async callback
-      if (this.state.idx === this.state.images.length) {
-        this.setState({
-          idx: 0,
-        })
+    this.setState(
+      {
+        idx: this.state.idx + 1  // shallow merge
+      },
+      () => {                    // async callback
+        console.log(this.state.idx);
+        if (this.state.idx === this.state.images.length) {
+          this.setState({
+            idx: 0,
+          });
+          console.log(this.state.idx);
+        }
       }
-    });
+    );
   }
-
 
   render() {
     return (
       <div className="flex-container flex-container--column">
         <button style={this.styl_btn_prev} onClick={this.handlePrev}>prev</button>
-        <img style={this.styl_sliderImage} src={this.state.images[this.state.idx]} alt="" />
-        <em>image caption placeholder</em>
+        <img
+          style={this.styl_sliderImage}
+          src={this.state.images[this.state.idx].url}
+          alt="" />
+        <em>{this.state.images[this.state.idx].title}</em>
         <button style={this.styl_btn_next} onClick={this.handleNext}>next</button>
       </div>
     );

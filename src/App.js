@@ -38,7 +38,7 @@ class App extends Component {
       name: "Header",
       title: 'The Header',
     },
-    whichComponentToShow: 'Header',
+    whichComponentToShow: 'ImageSlider',
     btnTxt_home_screen: 'Let\'s Go Home',
     btnTxt_slider_screen: 'Land on Slider',
     btnTxt_counter_screen: 'Show Counter',
