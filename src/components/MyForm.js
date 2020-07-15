@@ -9,28 +9,10 @@ export default class MyForm extends Component {
     title: "",
   }
 
-  handleChangeName = e => {
-    console.log(e.target.value);
+  handleChange = (e, fieldName, isCheckbox) => {
+    console.log(fieldName);
     this.setState({
-      name: e.target.value,
-    });
-  }
-  handleChangeFavPet = e => {
-    console.log(e.target.value);
-    this.setState({
-      favPet: e.target.value,
-    });
-  }
-  handleCheck = e => {
-    console.log(e.target.checked);
-    this.setState({
-      rememberMe: e.target.checked,
-    });
-  }
-  handleSelect = e => {
-    console.log(e.target.value);
-    this.setState({
-      title: e.target.value,
+      [fieldName]: isCheckbox ? e.target.checked : e.target.value,
     });
   }
   handleSubmit = () => {
@@ -43,25 +25,25 @@ export default class MyForm extends Component {
         <div>
           <input placeholder="jot down your thoughts"
             value={this.state.name}
-            onChange={this.handleChangeName}
+            onChange={e => this.handleChange(e, "name")}
           />
         </div>
         <div>
           <textarea placeholder="jot down your thoughts"
             value={this.state.favPet}
-            onChange={this.handleChangeFavPet}
+            onChange={e => this.handleChange(e, "favPet")}
           />
         </div>
         <div>
           <input type="checkbox"
             checked={this.state.rememberMe}
-            onChange={this.handleCheck}
+            onChange={e => this.handleChange(e, "rememberMe", true)}
           />
         </div>
         <div>
           <select 
             value={this.state.title}
-            onChange={this.handleSelect}
+            onChange={e => this.handleChange(e, "title")}
           >
             <option>Mr.</option>
             <option>Miss</option>
