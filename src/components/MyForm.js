@@ -9,41 +9,47 @@ export default class MyForm extends Component {
     title: "",
   }
 
-  handleChange = (e, fieldName, isCheckbox) => {
-    console.log(fieldName);
+  handleChange = e => {
+    console.log(e.target.name);
+    const isCheckbox = e.target.type === "checkbox";
     this.setState({
-      [fieldName]: isCheckbox ? e.target.checked : e.target.value,
+      [e.target.name]: isCheckbox ? e.target.checked : e.target.value,
     });
   }
-  handleSubmit = () => {
+  handleSubmit = e => {
+    e.preventDefault();
     console.log(this.state);
   }
 
   render() {
     return (
-      <div>
+      <form onSubmit={this.handleSubmit}>
         <div>
           <input placeholder="jot down your thoughts"
+            name="name"
             value={this.state.name}
-            onChange={e => this.handleChange(e, "name")}
+            onChange={this.handleChange}
           />
         </div>
         <div>
           <textarea placeholder="jot down your thoughts"
+            name="favPet"
             value={this.state.favPet}
-            onChange={e => this.handleChange(e, "favPet")}
+            onChange={this.handleChange}
           />
         </div>
         <div>
           <input type="checkbox"
+            name="rememberMe"
             checked={this.state.rememberMe}
-            onChange={e => this.handleChange(e, "rememberMe", true)}
+            onChange={this.handleChange}
           />
         </div>
         <div>
-          <select 
+          <select
+            name="title"
             value={this.state.title}
-            onChange={e => this.handleChange(e, "title")}
+            onChange={this.handleChange}
           >
             <option>Mr.</option>
             <option>Miss</option>
@@ -52,7 +58,7 @@ export default class MyForm extends Component {
           </select>
         </div>
         <button onClick={this.handleSubmit}>submit</button>
-      </div>
+      </form>
     );
   }
 }
