@@ -30,22 +30,19 @@ export default class FetchRandomUser extends Component {
         <div>something's missing! didn't get any data :(</div>
       )
     }
-    return (
-      <div>
-        <div>
-          {this.state.people.map(person => (
-            <div key={person.login.uuid /* any unique strings are required as key(s) */}> 
-              <img
-                src={person.picture.medium}
-                title={person.name.first+" "+person.name.last}
-                alt={person.name.first+" "+person.name.last}
-              />
-              <div>{person.name.first}</div>
-              <div>{person.name.last}</div>
-            </div>
-          ))}
-        </div>
+
+    const peopleJsx = this.state.people.map(person => (
+      <div key={person.login.uuid /* any unique strings are required as key(s) */}> 
+        <img
+          src={person.picture.medium}
+          title={person.name.first+" "+person.name.last}
+          alt={person.name.first+" "+person.name.last}
+        />
+        <div>{person.name.first}</div>
+        <div>{person.name.last}</div>
       </div>
-    );
+    ));
+
+    return <div>{peopleJsx}</div>
   }
 }
