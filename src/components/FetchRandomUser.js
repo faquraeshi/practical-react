@@ -4,16 +4,16 @@ export default class FetchRandomUser extends Component {
 
   state = {
     loading: true,
-    person: null,
+    people: [],
   };
 
   async componentDidMount() {
-    const url = "https://api.randomuser.me/";
+    const url = "https://api.randomuser.me/?results=5";
     const response = await fetch(url);
     const data = await response.json();
     this.setState(
       {
-        person: data.results[0],
+        people: data.results,
         loading: false,
       }
     );
@@ -25,7 +25,7 @@ export default class FetchRandomUser extends Component {
         <div>loading...</div>
       )
     }
-    if (!this.state.person) {
+    if (!this.state.people.length) {
       return (
         <div>something's missing! didn't get any data :(</div>
       )
@@ -33,13 +33,17 @@ export default class FetchRandomUser extends Component {
     return (
       <div>
         <div>
-          <img
-            src={this.state.person.picture.medium}
-            title={this.state.person.name.first+" "+this.state.person.name.last}
-            alt={this.state.person.name.first+" "+this.state.person.name.last}
-          />
-          <div>{this.state.person.name.first}</div>
-          <div>{this.state.person.name.last}</div>
+          {this.state.people.map(person => (
+            <div key={person.login.uuid /* any unique strings are required as key(s) */}> 
+              <img
+                src={person.picture.medium}
+                title={person.name.first+" "+person.name.last}
+                alt={person.name.first+" "+person.name.last}
+              />
+              <div>{person.name.first}</div>
+              <div>{person.name.last}</div>
+            </div>
+          ))}
         </div>
       </div>
     );
