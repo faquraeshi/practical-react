@@ -9,6 +9,7 @@ import Counter from './components/Counter';
 import Header from './components/Header';
 import MyForm from './components/MyForm';
 import ValidationForm from './components/ValidationForm';
+import FetchRandomUser from './components/FetchRandomUser';
 
 
 class App extends Component {
@@ -48,12 +49,17 @@ class App extends Component {
       name: "validationForm",
       title: "Form Validation",
     },
-    whichComponentToShow: 'validationForm',
+    randomUser: {
+      name: "randomUser",
+      title: "Fetch Random User(s)",
+    },
+    whichComponentToShow: 'randomUser',
     btnTxt_home_screen: 'Let\'s Go Home',
     btnTxt_slider_screen: 'Land on Slider',
     btnTxt_counter_screen: 'Show Counter',
     btnTxt_form_screen: 'Show Form',
     btnTxt_validationForm_screen: 'Show ValidationForm',
+    btnTxt_randomUser_screen: 'Show Random Users',
     visible: true,
   }
 
@@ -139,6 +145,12 @@ class App extends Component {
               this.setState({whichComponentToShow: this.state.validationForm.name});
             }}
             >{this.state.btnTxt_validationForm_screen}</button>
+          &nbsp;&nbsp;&nbsp;
+          <button
+            onClick={() => {
+              this.setState({whichComponentToShow: this.state.randomUser.name});
+            }}
+            >{this.state.btnTxt_randomUser_screen}</button>
         </div>
       )
     } else if (this.state.whichComponentToShow === this.state.form.name) {
@@ -166,9 +178,27 @@ class App extends Component {
           <ValidationForm />
           <button
             onClick={() => {
-              this.setState({whichComponentToShow: this.state.form.name});
+              this.setState({whichComponentToShow: this.state.randomUser.name});
             }}
-            >{this.state.btnTxt_form_screen}</button>
+            >{this.state.btnTxt_randomUser_screen}</button>
+          &nbsp;&nbsp;&nbsp;
+          <button
+            onClick={() => {
+              this.setState({whichComponentToShow: this.state.header.name});
+            }}
+            >{this.state.btnTxt_home_screen}</button>
+        </div>
+      )
+    } else if (this.state.whichComponentToShow === this.state.randomUser.name) {
+      return (
+        <div className="App">
+          <h1>{this.state.randomUser.title}</h1>
+          <FetchRandomUser />
+          <button
+            onClick={() => {
+              this.setState({whichComponentToShow: this.state.validationForm.name});
+            }}
+            >{this.state.btnTxt_validationForm_screen}</button>
           &nbsp;&nbsp;&nbsp;
           <button
             onClick={() => {
