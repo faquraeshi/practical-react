@@ -20,17 +20,27 @@ export default class FetchRandomUser extends Component {
   }
 
   render() {
+    if (this.state.loading) {
+      return (
+        <div>loading...</div>
+      )
+    }
+    if (!this.state.person) {
+      return (
+        <div>something's missing! didn't get any data :(</div>
+      )
+    }
     return (
       <div>
-        {this.state.loading || !this.state.person ? (
-          <div>loading...</div>
-        ) : (
-          <div>
-            <img src={this.state.person.picture.medium} />
-            <div>{this.state.person.name.first}</div>
-            <div>{this.state.person.name.last}</div>
-          </div>
-        )}
+        <div>
+          <img
+            src={this.state.person.picture.medium}
+            title={this.state.person.name.first+" "+this.state.person.name.last}
+            alt={this.state.person.name.first+" "+this.state.person.name.last}
+          />
+          <div>{this.state.person.name.first}</div>
+          <div>{this.state.person.name.last}</div>
+        </div>
       </div>
     );
   }
